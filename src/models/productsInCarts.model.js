@@ -15,9 +15,8 @@ const ProductsInCars = db.define('products_in_cars',{
         type: DataTypes.FLOAT,
         allowNull: false,
     },status: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.ENUM("Purchased","Available"),
         allowNull: false,
-        defaultValue: false,
     },cartId: {
         type: DataTypes.INTEGER,
         allowNull: false,

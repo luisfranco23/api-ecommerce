@@ -1,17 +1,23 @@
 const { Op } = require("sequelize");
 const Products = require("../models/products.model");
-const Users = require("../models/users.model");
 
 class products {
     static async getAllProducts() {
         try {
             const products = await Products.findAll({
-                include: {
-                    model: Users,
-                    attributes: ["id"]
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"],
                 }
             });
             return products;
+        } catch (error) {
+            throw error;
+        }
+    }
+    static async addNewProduct(product) {
+        try {
+            const newProduc = await Products.create(product);
+            return newProduc;
         } catch (error) {
             throw error;
         }

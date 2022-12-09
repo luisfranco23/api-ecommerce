@@ -28,13 +28,13 @@ const Products = db.define("products", {
       min: 0,
     },
   },
+  image: {
+    type: DataTypes.STRING,
+  },
   status: {
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.ENUM("Active", "Disabled"),
     allowNull: false,
-    defaultValue: true,
-    validate: {
-      isBoolean: true,
-    },
+    defaultValue: "Active"
   },
   userId: {
     type: DataTypes.INTEGER,
